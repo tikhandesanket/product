@@ -1,0 +1,56 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+#athlete_member_steps {padding-right: 30px;}
+.progress_component{width: 400px; float: right; width: auto; padding: 20px 0;}
+.wizard_progress_list{ list-style: none;   display:block; margin: 0; text-align: center; width: 100%;}
+.wizard_progress_list li{ margin: 10px; float: left; display: block; width: 30px; }
+.wizardbar{height: 3px;}
+.progress_in_percentage {color: #0E90D2;padding-right: 10px;padding-bottom: 5px;font-size: 17px;float:right;width:200px;text-align: right;}
+.progress .wizardbar_completed{height: 3px; width: 10%/* change this value each time you reach the next step*/;}
+.progress_circle{background: #CCCBCA; border-radius: 20px 20px 20px 20px; padding-left: 6px; padding-right: 5px; color:#fff;}
+.active_progress_circle{background:#609BD7; border-radius: 20px 20px 20px 20px; padding-left: 6px; padding-right: 5px; color:#fff; -moz-box-shadow: 1px 1px 2px #999; -webkit-box-shadow: 1px 1px 2px#999; box-shadow: 1px 1px 2px #999;}
+.wizard_closes_btn small{float: left; color: #CCCCCC; margin-top: 4px;}
+.wizard_closes_btn i{margin:4px 0 0 5px; float: left;}
+.icon-close {color :#CCCCCC}
+
+div.WizardSubTitle {
+    color: #000000;
+    font-family: 'Fjalla One',sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    padding:0; margin:0;
+    text-transform: none;
+    padding: 20px 0 0px 0;
+}
+div.WizardSubTitle span.blackDescription {font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:12px; color:#000000; margin:0; padding:0; line-height:1.4; display:block;}
+div.WizardSubTitle span.greyDescription {font-family:Gotham, "Helvetica Neue", Helvetica, Arial, sans-serif; font-size:12px; color:#000000; margin:0; padding:0; line-height:1.4; display:block;}
+.athlete-wizard-width {width:1170px\9;}
+.formShadow {width:96.5%;background:#FFF; -moz-box-shadow: 0 0 2px #888; -webkit-box-shadow: 0 0 2px#888; box-shadow: 0 0 2px #888;}
+.container {margin-right: auto; margin-left: auto;}
+.pull-right {float: right}
+.button_steps {float: right;margin: 20px 0px 20px 20px;}
+.btn-info:hover {color: #ffffff;background-color: #2f96b4;}
+.btn-info {padding: 2px 10px;color: #FFF;background: #578CCC;text-transform: uppercase;border: none;-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;border-radius: 5px;margin-top: 10px;}
+.margintop-medium {margin-top: 20px;}
+.margintop-small {margin-top: 10px;}
+label.grey-text {color: #888888;text-transform: uppercase;font-size: 12px;}
+.team_error {color: #C2131B;font-size: 12px;}
+.btn_cancel {padding: 2px 10px;color: #FFF;background: #858585;text-transform: uppercase;border: none;-moz-border-radius: 5px;-webkit-border-radius: 5px;-khtml-border-radius: 5px;border-radius: 5px;margin-top: 10px;}
+teamsmedia="screen
+.icon-teams:before {
+    content: "\6d";
+}
+

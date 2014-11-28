@@ -1,0 +1,13 @@
+<% if @step == "select_sports" && !@sport.blank? %>
+    <li id="list_<%= @sport.id %>">
+      <%=link_to_remote content_tag(:i, '', :class=>"icon-close"), :url=>{:controller=>"teams",:action=> "remove_sport",:sport_id=>@sport.id},
+                        :confirm=>"Are you sure?"  %>
+      <%#=link_to (image_tag sport.image.url ? sport.image.url() : '#', :border => 0, :width=>'46px', :height=>'46px', :alt => t("txt.image_alt"), :title => sport.name), sport %>
+      <%= image_tag @sport.image.url ? @sport.image.url() : '#', :border => 0, :width=>'46px', :height=>'46px', :alt => t("txt.image_alt"), :title => @sport.name %>
+      <h6><%#=@sport.translated_name %></h6>
+      <p><%#= @sport.sport_family.translated_name unless @sport.sport_family.blank? %></p>
+      <div style="display: none;">
+        <input type="checkbox" value="<%=@sport.id%>" name="sport_ids[]"  checked>
+      </div>
+    </li>
+<% end%>

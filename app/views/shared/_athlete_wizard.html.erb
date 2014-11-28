@@ -1,0 +1,24 @@
+<% begin
+     steps =  10
+     module_name = module_name || 'progress_wizard'
+     active = 1
+   rescue
+     steps = 10
+     module_name = 'progress_wizard'
+     active = 1
+   end
+%>
+
+<% if module_name == 'athlete_member' || module_name == 'team_member' || module_name == 'school_member'%>
+  <div class="progress_in_percentage" id="progress_in_percentage"><%= steps == active ? 100 : (100/steps)*active%>&nbsp;%</div>
+<% else %>
+  <ul class="wizard_progress_list">
+    <% (1..steps).each do |i| %>
+      <li><span id="<%= module_name %>_step_<%=i %>" class="<%= i == active ? 'active_progress_circle' : 'progress_circle'%>"><%=i%></span></li>
+    <% end %>
+  </ul>
+<% end %>
+<div class="clearfix"></div>
+<div class="progress wizardbar">
+  <div id="<%= module_name %>_progress" class="bar wizardbar_completed" style="width:<%= steps == active ? 100 : (100/steps)*active%>%;"></div>
+</div>

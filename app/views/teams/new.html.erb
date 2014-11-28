@@ -1,0 +1,100 @@
+<div id="team_wizard_content">
+<%#= form_remote_tag(:url => get_sport_teams_teams_path(:team_wizard=>"team_wizard"), :method=>:get,:name=>"team_wizard" ) do %>
+    <div class="clearfix"></div>
+      <div class="container formShadow ">
+        <div class="span4"><h1><img src="/images/landing_page/team.png" width="60" height="60" alt="results"/>Add A Team</h1></div>
+        <div class=" pull-right">
+          <button type="submit" class="wizard_closes_btn close"><small></small><i class="icon-remove"></i></button>
+        </div>
+        <div id="team_wizard_1">
+          <div id="athlete_member_steps" class="progress_component">
+            <%= render :partial=> "/shared/athlete_wizard" ,:locals => {:steps => 7 ,:module_name => "team_member"}%>
+          </div>
+        <div class="clearfix"></div>
+        <div class="span10">
+        <div id="radio_button_errors" class="team_error">  </div>
+          <div class="WizardSubTitle"><%=t("What type of Teams")  %> ?</div>
+        </div>
+        <div class="span10 margintop-small">
+          <%# team_types = LeagueTeamType.find(:all, :select=>"id,name")
+             unless team_types.blank? %>
+              <%# team_types.each do |team_type| %>
+                  <label class="radio inline">
+                    <input type="radio" style="margin-top:3px" name="team_type" value="1" <%#= !@team_type.blank? && @team_type == "#{team_type.id}" ? "checked=\"checked\"" : '' %>>  <small class="grey-text-lowercase">Club </small>
+                  </label>
+                   <label class="radio inline">
+                    <input type="radio" style="margin-top:3px" name="team_type" value="2" <%#= !@team_type.blank? && @team_type == "#{team_type.id}" ? "checked=\"checked\"" : '' %>>  <small class="grey-text-lowercase">High School </small>
+                  </label>
+                   <label class="radio inline">
+                    <input type="radio" style="margin-top:3px" name="team_type" value="3" <%#= !@team_type.blank? && @team_type == "#{team_type.id}" ? "checked=\"checked\"" : '' %>>  <small class="grey-text-lowercase">Youth </small>
+                  </label>
+                   <label class="radio inline">
+                    <input type="radio" style="margin-top:3px" name="team_type" value="4" <%#= !@team_type.blank? && @team_type == "#{team_type.id}" ? "checked=\"checked\"" : '' %>>  <small class="grey-text-lowercase">University & College </small>
+                  </label>
+              <%# end
+                 end %>
+
+          <label class="grey-text inline margintop-medium">Gender:</label>
+          <label class="radio inline">
+            <input type="radio" style="margin-top:3px" name="gen" value="M" <%#= !@gender.blank? && @gender == 'M' ? "checked=\"checked\"" : '' %>><small class="grey-text-lowercase"> Male</small>
+          </label>
+          <label class="radio inline">
+            <input type="radio" style="margin-top:3px" name="gen" value="F" <%#= !@gender.blank? && @gender == 'F' ? "checked=\"checked\"" : '' %>>   <small class="grey-text-lowercase">Female</small>
+          </label>
+          <label class="radio inline">
+            <input type="radio" style="margin-top:3px" name="gen" value="C" <%#= !@gender.blank? && @gender == 'C' ? "checked=\"checked\"" : '' %>><small class="grey-text-lowercase">Co-ed</small>
+          </label>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="span10">
+          <div class="button_steps">
+            <input type="button" value="Next"  class="btn-info" onclick="add_team_wizard();">
+          </div>
+        </div>
+      </div>
+    <div id="team_wizard_2" style="display: none;">
+      <div id="athlete_member_steps" class="progress_component">
+        <%= render :partial=> "/shared/athlete_wizard" ,:locals => {:steps => 7 ,:active=> 2, :module_name => "team_member"}%>
+      </div>
+        <div class="clearfix"></div>
+        <div class="span5">
+          <div id="sports_errors" class="team_error">  </div>
+          <div class="WizardSubTitle">"What sports does this team play" ? <br>
+            <span class="blackDescription">"List all the sports played."</span>
+          </div>
+          <span class="light_grey_text">*To remove a sport that you have added, click the X.</span>
+          <div class="clearfix"></div>
+          <label class="grey-text margintop-small"> SPORT NAME:</label> 
+            <div class="button_steps">
+             <span><%=text_field "sport_field", "sports", :value=>"",:id=>"sport_name", :class=>"span2", :style=>'width:356px;', :placeholder => 'Inter The Sport Name' %></span>
+            <input type="button" value="Get Sports" class="btn_cancel" onclick= "get_sport();">           
+          </div>
+         
+           <%#= model_auto_completer "sport[full_name]", "", "sport_id", "", {:allow_free_text=>false, :url=>auto_complete_belongs_to_path("Sport"), :after_update_element => "function(element, value){" + remote_function( :url => {:controller => "teams", :action=> "update_sports_list"}, :with => "'sport_id='+ value.id ") + "}"}, {:class=> 'team_wizard_sport_auto_complete span4'} %>          
+        </div>
+        <input type="hidden" id="gender"  name="gender" value="" />
+        <input type="hidden" id="team_type_id"  name="team_type_ids" value= "" />
+
+      <div class="span5 left_border_lightgrey ">
+        <ul class="render_list" id="team_member_wizard_sports_list">
+        </ul>
+      </div>
+        <div class="clearfix"></div>
+        <div class="span10">
+          <div class="button_steps">
+            <input type="button" value="Go Back" class="btn_cancel" onclick="jQuery('#team_wizard_1').show();jQuery('#team_wizard_2').show();">
+            <%= submit_tag "Next" ,:class=>"btn-info" %>
+          </div>
+        </div>
+      </div>
+    </div>
+<%#end%>
+</div>
+<script>
+  function get_sport(){   
+   var name = $('#sport_name').val();      
+    $.post("/teams/update_sports_list",{sport_name: name});                                                                                             
+  }
+</script>
+
